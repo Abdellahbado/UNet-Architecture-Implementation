@@ -1,80 +1,33 @@
-# U-Net Architecture for Image Segmentation
+# U-Net Image Segmentation
 
 ## Overview
-This repository contains the implementation of a U-Net architecture for image segmentation using TensorFlow and Keras. U-Net is a convolutional neural network commonly used for semantic segmentation tasks in computer vision.
+This repository contains a TensorFlow and Keras implementation of the U-Net architecture for image segmentation. U-Net is a popular convolutional neural network used in computer vision for tasks such as semantic segmentation.
+
+## Description
+The U-Net architecture consists of an encoder, bottleneck, and decoder. It is particularly effective for image segmentation tasks where detailed spatial information is crucial. The model is designed to take an input image and output a segmentation mask, highlighting regions of interest.
 
 ## Code Structure
-
-### `conv2d_block` function
-```python
-def conv2d_block(input_tensor, n_filters, kernel_size=3):
-    # Adds 2 convolutional layers with specified parameters
-    # ...
-    return x
-```
-
-### `encoder_block` function
-```python
-def encoder_block(inputs, n_filters=64, pool_size=(2,2), dropout=0.3):
-    # Adds convolutional block and performs down sampling on the output of convolutions
-    # ...
-    return f, p
-```
-
-### `encoder` function
-```python
-def encoder(inputs):
-    # Defines the encoder or downsampling path
-    # ...
-    return p4, (f1, f2, f3, f4)
-```
-
-### `bottleneck` function
-```python
-def bottleneck(inputs):
-    # Defines the bottleneck convolutions to extract more features before the upsampling layers
-    # ...
-    return bottle_neck
-```
-
-### `decoder_block` function
-```python
-def decoder_block(inputs, conv_output, n_filters=64, kernel_size=3, strides=3, dropout=0.3):
-    # Defines one decoder block of the U-Net
-    # ...
-    return c
-```
-
-### `decoder` function
-```python
-def decoder(inputs, convs, output_channels):
-    # Defines the decoder of the U-Net chaining together 4 decoder blocks
-    # ...
-    return outputs
-```
-
-### `unet` function
-```python
-def unet():
-    # Defines the U-Net architecture by connecting the encoder, bottleneck, and decoder
-    # ...
-    return model
-```
+- **conv2d_block**: Adds two convolutional layers with specified parameters and applies ReLU activation.
+- **encoder_block**: Implements a convolutional block and performs downsampling on the output of convolutions.
+- **encoder**: Defines the encoder or downsampling path by chaining multiple encoder blocks.
+- **bottleneck**: Implements bottleneck convolutions to extract additional features before upsampling layers.
+- **decoder_block**: Defines one decoder block of the U-Net, combining upsampling and skip connections.
+- **decoder**: Connects four decoder blocks to reconstruct the segmented output.
+- **unet**: Defines the entire U-Net architecture by connecting the encoder, bottleneck, and decoder.
 
 ## Usage
 ```python
-# Instantiate the model
+# Instantiate the U-Net model
 model = unet()
 
-# See the resulting model architecture
+# View the model architecture
 model.summary()
 ```
 
 ## Model Configuration
-- Input shape: (128, 128, 3)
-- Output channels: 3 (adjustable based on the number of classes)
+- Input Shape: (128, 128, 3)
+- Output Channels: 3 (adjustable based on the number of classes)
 
 ## Dependencies
 - TensorFlow
 - Keras
-
